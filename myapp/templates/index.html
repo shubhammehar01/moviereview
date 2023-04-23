@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>newPRo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="myapp/static/navbar.css">
+    </link>
+    <style>
+        img {
+            width: 150px;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+
+        .containers {
+            margin-bottom: 10px;
+        }
+
+        .content {
+            float: left;
+            margin-left: 25px;
+            text-align: center;
+            width: 200px;
+            height: 350px;
+            padding: 12px;
+            background: rgba(33, 33, 48, 0.68);
+            margin-top: 25px;
+            /* display: inline; */
+            overflow: hidden;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    {% extends "navbar.html" %}
+    {% block navbar %}
+    {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:green">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+    <div class="containers">
+        {% for i in movie %}
+        <div class="content" id="{{i.id}}" onclick="detail(id)">
+            <img alt="nhi show kar raha" src="{{i.img}}" />
+
+            <p>{{i.title}}</p>
+            {% comment %} <p>Genre - {{i.genre}}</p> {% endcomment %}
+            <p>Rating - {{i.rating}}/10</p>
+            <p>Duration - {{i.duration}} Minute</p>
+        </div>
+        {% endfor %}
+
+        <form action="details" method="post" id="getdetail" style="display: none;">
+            {% csrf_token %}
+            <input type="text" name="takeid" id="takeid">
+        </form>
+    </div>
+    <script>
+        function detail(id) {
+            document.getElementById('takeid').value = id
+            document.getElementById('getdetail').submit()
+        }
+    </script>
+    {% endblock navbar %}
+</body>
+
+</html>

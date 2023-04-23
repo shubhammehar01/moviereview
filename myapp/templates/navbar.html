@@ -1,0 +1,28 @@
+<navbar>
+    <div class="nav-left">
+        <a href="index">MovieReview</a>
+        <a href="index">home</a>
+        <a href="contact">contact</a>
+        <a href="about">about</a>
+    </div>
+    <div class="nav-right">
+        {% if email %}
+        <a href="account">account</a>
+        <a href="signout">signout</a>
+        {% else %}
+        <a href="login">login</a>
+        <a href="signup">signup</a>
+        {% endif %}
+    </div>
+
+</navbar>
+<br>
+{% block navbar %}
+  
+{% endblock navbar %}
+<footer class="footer">
+    <div class="text-center">
+        copyright&#169; 2023   
+    </div>
+    
+</footer>

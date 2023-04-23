@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="myapp/static/navbar.css"></link>
+    <style>
+        .content button {
+            margin-top: 10px;
+        }
+        .footer{
+            background-color: rgba(43, 43, 43, 0.542);
+            width:100%;
+            color: rgb(20, 20, 25);
+            padding: 10px;
+        }
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 10%;
+        }
+        p{
+            font-size: 20px;
+        }
+        button{
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 12px;
+
+        }
+    </style>
+</head>
+<body>
+{% extends 'navbar.html' %}
+{% block navbar %}
+    <div class="row my-3">
+            <div class="col" style="margin-left:5%;">
+                <h3 id="hide" class="{{final.title}}"> Title - {{final.title}}</h3>
+                <p>Rating - {{final.rating}}</p>
+                <p>Total Rating - {{final.t_rating}}</p>
+                <p> Tagline - {{final.tagline}}</p>
+                <p> Duration - {{final.duration}} Minute</p>
+                <p>Budget - Rs.{{final.budget}} </p>
+                <p>Revenue - Rs.{{final.revenue}} </p>  
+                {% for j in genre %}
+                    <p>Genre - {{final.genre}}</p>
+                {% endfor %}
+                <p>ReleaseDate - {{final.release}}</p>
+                <p>Language - {{final.language}}</p>
+                <p>Overview - {{final.overview}} </p>
+                <a id="reviews" class="btn btn-outline-secondary" target="_blank"></a>
+            </div>
+            <div class="col text-center">
+                <img src={{final.img}} alt="Image Not found" width="300px" height="450px"><br>
+            </div>
+    </div>
+    <script>
+    let title = document.getElementById('hide').className;
+    console.log('heeloasf')
+    fetch(`https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=${title}&api-key=Me2dq4frGobFsaFARqXWmob9BQiDLeiT`)
+    .then(response=>response.json())
+    .then(data=>{
+        if(data.results){
+            document.getElementById('reviews').innerHTML = 'open Reviews of the Movie';
+            document.getElementById('reviews').setAttribute('href',data.results[0].link.url) ;
+        }
+        else{
+            conitnue;
+        }
+        document.getElementById('reviews').setAttribute('href',data.results[0].link.url) ;
+    });
+    </script>
+{% endblock navbar %}
+
+</body>
+
+</html>

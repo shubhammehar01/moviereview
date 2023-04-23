@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="myapp/static/navbar.css">
+</head>
+<body>
+{% extends 'navbar.html' %}
+{% block navbar %}
+<div class="container">
+
+    <h5> <i class="material-icons"></i> <a class="text-decoration-none"
+            href="mailto:shubhammehar100@gmail.com?subject=Hello%20again" target="_blank" style="text-decoration:none;" rel="noopener noreferrer">Send a Email</a> </h5>
+    <h5>
+        <i style="font-size:24px" class="fa"></i> <a class="text-decoration-none"
+            href="https://www.linkedin.com/in/shubham-05ba56202/"target="_blank" style="text-decoration:none;" rel="noopener noreferrer">Linkedin</a>
+    </h5>
+        <p>Graduation Year-2024</p>
+        <h4>Lakshmi Narain College of Technology,Bhopal</h4>
+        <h4>Project Title - Movie Review Webapplication</h4>
+
+        <span>Problem -> </span>
+        <p>Despite the availability of numerous movie review websites, there is a lack of reliable and trustworthy platforms that provide comprehensive and unbiased movie reviews. Many websites are biased towards certain genres or actors, while others are overwhelmed with sponsored content, making it difficult for users to make informed decisions about the movies they want to watch. Additionally, some websites lack user engagement and fail to provide a personalized experience to their users. This leads to a lack of trust and engagement from the audience.
+
+            Therefore, there is a need for a movie review website that provides reliable and unbiased reviews, personalized user experience, and encourages user engagement to create a vibrant community of movie enthusiasts. The website should strive to offer a diverse range of reviews for various genres and provide users with a platform to share their opinions and engage in meaningful discussions. Such a website can enhance the movie-watching experience of users by helping them make informed decisions and creating a community of movie enthusiasts.            
+        </p>
+        <br>
+        <span>Objective of Project on Movie Review System-></span>
+        <p>The objective of this movie review website is to provide users with a reliable and unbiased platform to read and share comprehensive movie reviews across various genres. Our goal is to create a personalized user experience that encourages engagement, fosters a vibrant community of movie enthusiasts, and enables users to make informed decisions about the movies they watch. We strive to offer a diverse range of reviews that cater to the interests of our users and provide a platform for them to share their opinions, engage in discussions, and interact with other movie enthusiasts. By achieving these objectives, we aim to enhance the movie-watching experience of our users and become a leading destination for movie reviews on the internet.
+        </p>
+
+</div>
+{% endblock navbar %}
+</body>
+</html>
